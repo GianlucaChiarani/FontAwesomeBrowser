@@ -13,7 +13,7 @@ A simple jQuery plugin that allows you to create a free icon browser in a respon
 ```
 ## Usage
 ```
-<input type="text" name="icon" data-fa-browser />
+<input type="text" data-fa-browser />
 ```
 ```
 <script>
