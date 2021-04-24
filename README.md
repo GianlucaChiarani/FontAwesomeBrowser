@@ -1,5 +1,5 @@
 # Font Awesome Browser
-A simple jQuery plugin that allows you to create a free icon browser in a responsive window linked to an ad input element.
+A simple jQuery plugin that allows you to integrate a responsive icon browser linked to an ad input element.
 
 [DEMO](https://codepen.io/GianlucaChiarani/pen/yLgZJvX)
 
