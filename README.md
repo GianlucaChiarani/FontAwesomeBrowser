@@ -1,5 +1,5 @@
 # Font Awesome Browser
-A simple jQuery plugin that allows the user to pick an icon from a responsive icon browser and shows the corresponding icon class in an input element.
+An easy-to-use jQuery plugin that allows the user to pick an icon from a responsive icon browser and shows the corresponding icon class in an input element.
 
 [DEMO](https://codepen.io/GianlucaChiarani/pen/yLgZJvX)
 
