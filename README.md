@@ -17,6 +17,9 @@ Font Awesome Browser is a simple and user-friendly JavaScript plugin that lets u
 Add these lines inside your HTML `<head>` section:
 
 ```
+<!-- Font Awesome CSS (required) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<!-- Font Awesome Browser plugin -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.js"></script>
 ```
@@ -45,6 +48,9 @@ Add these lines inside your HTML `<head>` section:
 <head>
   <meta charset="UTF-8">
   <title>Font Awesome Browser Example</title>
+  <!-- Font Awesome CSS (required) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Font Awesome Browser plugin -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.css" />
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.js"></script>
 </head>
@@ -56,6 +62,12 @@ Add these lines inside your HTML `<head>` section:
 </body>
 </html>
 ```
+
+## Compatibility
+
+- Works with all modern browsers (Chrome, Firefox, Edge, Safari)
+- Requires Font Awesome 5.x CSS (free)
+- No dependencies (vanilla JavaScript)
 
 ## Contributing
 
