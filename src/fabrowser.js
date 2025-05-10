@@ -1022,6 +1022,46 @@
         const windowDiv = document.createElement("div");
         windowDiv.className = "window";
 
+        const searchInput = document.createElement("input");
+        searchInput.className = "fa-browser-search";
+        searchInput.type = "text";
+        searchInput.placeholder = "Cerca un'icona...";
+        windowDiv.appendChild(searchInput);
+
+        const iconsWrapper = document.createElement("div");
+        iconsWrapper.style.display = "flex";
+        iconsWrapper.style.flexWrap = "wrap";
+        iconsWrapper.style.width = "100%";
+        iconsWrapper.style.overflowY = "auto";
+        windowDiv.appendChild(iconsWrapper);
+
+        let filteredIcons = icons.slice();
+        function renderIcons(filter = "") {
+          iconsWrapper.innerHTML = "";
+          filteredIcons = icons.filter((icon) =>
+            icon.includes(filter.toLowerCase())
+          );
+          filteredIcons.forEach(function (icon, idx) {
+            const iconDiv = document.createElement("div");
+            iconDiv.className = "icon";
+            iconDiv.tabIndex = -1;
+            iconDiv.innerHTML =
+              '<i title="fa fa-' + icon + '" class="fa fa-' + icon + '"></i>';
+            iconDiv.addEventListener("click", function () {
+              target.value = this.querySelector("i").className;
+              iconContainer.remove();
+            });
+            iconsWrapper.appendChild(iconDiv);
+          });
+        }
+        renderIcons();
+
+        searchInput.addEventListener("input", function () {
+          renderIcons(this.value);
+          selectedIdx = 0;
+          updateSelection();
+        });
+
         const closeDiv = document.createElement("div");
         closeDiv.className = "close";
         closeDiv.innerHTML = '<i class="fa fa-times"></i>';
@@ -1029,22 +1069,67 @@
           iconContainer.remove();
         });
 
-        icons.forEach(function (icon) {
-          const iconDiv = document.createElement("div");
-          iconDiv.className = "icon";
-          iconDiv.innerHTML =
-            '<i title="fa fa-' + icon + '" class="fa fa-' + icon + '"></i>';
-          iconDiv.addEventListener("click", function () {
-            target.value = this.querySelector("i").className;
-            iconContainer.remove();
+        let selectedIdx = 0;
+        function updateSelection() {
+          const iconDivs = iconsWrapper.querySelectorAll(".icon");
+          iconDivs.forEach((el, i) => {
+            el.classList.toggle("selected", i === selectedIdx);
           });
-
-          windowDiv.appendChild(iconDiv);
+          if (iconDivs[selectedIdx]) {
+            iconDivs[selectedIdx].scrollIntoView({ block: "nearest" });
+          }
+        }
+        function getIconsPerRow() {
+          const iconDivs = iconsWrapper.querySelectorAll(".icon");
+          if (iconDivs.length < 2) return 1;
+          const firstTop = iconDivs[0].offsetTop;
+          for (let i = 1; i < iconDivs.length; i++) {
+            if (iconDivs[i].offsetTop !== firstTop) {
+              return i;
+            }
+          }
+          return iconDivs.length;
+        }
+        windowDiv.addEventListener("keydown", function (e) {
+          const iconDivs = iconsWrapper.querySelectorAll(".icon");
+          if (!iconDivs.length) return;
+          const perRow = getIconsPerRow();
+          if (e.key === "ArrowRight") {
+            selectedIdx = (selectedIdx + 1) % iconDivs.length;
+            updateSelection();
+            e.preventDefault();
+          } else if (e.key === "ArrowLeft") {
+            selectedIdx = (selectedIdx - 1 + iconDivs.length) % iconDivs.length;
+            updateSelection();
+            e.preventDefault();
+          } else if (e.key === "ArrowDown") {
+            selectedIdx = (selectedIdx + perRow) % iconDivs.length;
+            updateSelection();
+            e.preventDefault();
+          } else if (e.key === "ArrowUp") {
+            selectedIdx =
+              (selectedIdx - perRow + iconDivs.length) % iconDivs.length;
+            updateSelection();
+            e.preventDefault();
+          } else if (e.key === "Enter") {
+            iconDivs[selectedIdx].click();
+            e.preventDefault();
+          } else if (e.key === "Escape") {
+            iconContainer.remove();
+            e.preventDefault();
+          }
         });
+
+        setTimeout(() => {
+          searchInput.focus();
+          windowDiv.tabIndex = 0;
+        }, 0);
 
         iconContainer.appendChild(windowDiv);
         iconContainer.appendChild(closeDiv);
         document.body.appendChild(iconContainer);
+
+        windowDiv.focus();
       }
     });
   };

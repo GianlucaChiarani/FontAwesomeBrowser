@@ -5,6 +5,7 @@
  * @license The MIT License (MIT)
  */
 
+/* Modernizzazione e miglioramento UI/UX FontAwesome Browser */
 .fa-browser-container {
   box-sizing: border-box;
   display: flex;
@@ -13,56 +14,124 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.5);
+  padding: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  animation: fadeInBg 0.25s;
 }
-
+.fa-browser-container * {
+  box-sizing: border-box;
+}
+@keyframes fadeInBg {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
 .fa-browser-container > .window {
   display: flex;
-  padding: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
   box-sizing: border-box;
   position: relative;
-  max-width: 800px;
-  width: 100%;
-  height: 100%;
-  background: white;
+  max-width: 540px;
+  width: 95vw;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   z-index: 1;
-  overflow: auto;
+  overflow: hidden;
+  animation: popIn 0.25s;
 }
-
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 .fa-browser-container > .close {
-  font-size: 36px;
-  color: white;
+  font-size: 28px;
+  color: #fff;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 18px;
+  right: 24px;
   z-index: 2;
   cursor: pointer;
-  text-shadow: 0 0 10px black;
+  background: rgba(30, 34, 45, 0.85);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(30, 34, 45, 0.18);
+  transition: background 0.18s, color 0.18s, transform 0.12s;
+  border: none;
 }
-
+.fa-browser-container > .close:hover {
+  background: #ff3b3b;
+  color: #fff;
+  transform: scale(1.05);
+}
+.fa-browser-search {
+  width: 100%;
+  margin-bottom: 1.2rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #f4f6fa;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(30, 34, 45, 0.04);
+  transition: box-shadow 0.18s, background 0.18s;
+}
+.fa-browser-search:focus {
+  background: #e9eef6;
+  box-shadow: 0 2px 8px rgba(30, 34, 45, 0.1);
+}
 .fa-browser-container .icon {
-  flex: 0 0 10%;
-  font-size: 36px;
+  flex: 0 0 12.5%;
+  max-width: 12.5%;
+  font-size: 2rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   cursor: pointer;
+  color: #444;
+  transition: color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.12s;
+  border-radius: 10px;
+  padding: 0.5rem 0 0.2rem 0;
+  position: relative;
+  outline: none;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.fa-browser-container .icon:hover {
-  color: #8f8f8f;
+.fa-browser-container .icon:hover,
+.fa-browser-container .icon:focus,
+.fa-browser-container .icon.selected {
+  color: #007bff;
+  background: #f0f6ff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.08);
 }
-
-/* xs */
-@media (max-width: 575px) {
+@media (max-width: 500px) {
   .fa-browser-container .icon {
     flex: 0 0 20%;
+    max-width: 20%;
+    font-size: 2.3rem;
   }
-  .fa-browser-container > .close {
-    top: 0.5rem;
-    right: 0.5rem;
-  }
+}
+.fa-browser-container .window {
+  scrollbar-width: thin;
 }

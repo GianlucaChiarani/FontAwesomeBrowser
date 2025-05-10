@@ -20,8 +20,8 @@ Add these lines inside your HTML `<head>` section:
 <!-- Font Awesome CSS (required) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <!-- Font Awesome Browser plugin -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.6/src/fabrowser.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.6/src/fabrowser.js"></script>
 ```
 
 ## Usage
@@ -51,8 +51,8 @@ Add these lines inside your HTML `<head>` section:
   <!-- Font Awesome CSS (required) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <!-- Font Awesome Browser plugin -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.5/src/fabrowser.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.6/src/fabrowser.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/GianlucaChiarani/FontAwesomeBrowser@0.6/src/fabrowser.js"></script>
 </head>
 <body>
   <input type="text" data-fa-browser placeholder="Choose an icon..." />
